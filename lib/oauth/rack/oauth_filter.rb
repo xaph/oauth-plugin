@@ -40,7 +40,7 @@ module OAuth
             oauth_token = nil
 
             if request_proxy.token
-              oauth_token = client_application.tokens.where(:invalidated_at => nil, authorized_at.ne => nil, :token request_proxy.token).first
+              oauth_token = client_application.tokens.where(:invalidated_at => nil, authorized_at.ne => nil, :token => request_proxy.token).first
               if oauth_token.respond_to?(:provided_oauth_verifier=)
                 oauth_token.provided_oauth_verifier = request_proxy.oauth_verifier
               end
