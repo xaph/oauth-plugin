@@ -287,7 +287,7 @@ Make sure it looks like this:
 All you need to do here is the change the authorize action to use the request_token callback url and add the oauth_verifier to the callback url.
 
   def authorize
-    @token = ::RequestToken.find_by_token params[:oauth_token]
+    @token = ::RequestToken.find_by(:token => params[:oauth_token])
     unless @token.invalidated?
       if request.post?
         if params[:authorize] == '1'
